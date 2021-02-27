@@ -6,42 +6,102 @@ namespace Seidel_s_Algorithm
 {
     static class Algorithm
     {
-        public static void RunSeidelsAlgo(int[,] matrix, int nodesCount)
+        public static SquaredMatrix RunSeidelsAlgo(SquaredMatrix A)
         {
-            int[,] Z = MultiplyMatrices(matrix, matrix);
-
-        }
-
-        public static void ComputeShortestPaths(int[,] matrix)
-        {
-
-        }
-        
-        
-
-        public static int[,] MultiplyMatrices(int[,] A, int[,] B)
-        {
-            if(A.GetLength(1) != B.GetLength(0))
+            if (AllOnes(A))
             {
-                throw new IncompatibleMatricesException($"Columns count of matrix A ({A.GetLength(1)}) must be equal to count of rows of matrix B ({B.GetLength(0)})!");
+                return A;
             }
-            int[,] Z = new int[A.GetLength(0), B.GetLength(1)];
-            for (int i = 0; i < A.GetLength(0); i++)
+
+            SquaredMatrix Z = A * A;
+
+            SquaredMatrix B = CreateMatrixWithOnes(A, Z);
+
+            SquaredMatrix T = RunSeidelsAlgo(B);
+
+            SquaredMatrix X = T * A;
+
+            int[] degree = CalculateDegree(A);
+
+            SquaredMatrix D = CalculateDMatrix(T, X, degree);
+
+            return D;
+        }
+
+        private static SquaredMatrix CalculateDMatrix(SquaredMatrix T, SquaredMatrix X, int[] degree)
+        {
+            int[,] d = new int[T.Order, T.Order];
+            for (int i = 0; i < T.Order; i++)
             {
-                for (int j = 0; j < B.GetLength(1); j++)
+                for (int l = 0; l < T.Order; l++)
                 {
-                    for (int k = 0; k < B.GetLength(0); k++)
+                    d[i, l] = 2 * T[i, l];
+
+                    if (X[i, l] < T[i, l] * degree[l])
                     {
-                        Z[i, j] += A[i, k] * B[k, j];
+                        d[i, l] -= 1;
                     }
                 }
             }
-            return Z;
+            return new SquaredMatrix(d);
         }
+
+        private static int[] CalculateDegree(SquaredMatrix A)
+        {
+            int[] degree = new int[A.Order];
+
+            for (int i = 0; i < A.Order; i++)
+            {
+                int sum = 0;
+                for (int l = 0; l < A.Order; l++)
+                {
+                    sum += A[i, l];
+                }
+                degree[i] = sum;
+            }
+
+            return degree;
+        }
+
+        private static SquaredMatrix CreateMatrixWithOnes(SquaredMatrix A, SquaredMatrix Z)
+        {
+            int[,] b = new int[A.Order, A.Order];
+
+            for (int i = 0; i < A.Order; i++)
+            {
+                for (int l = 0; l < A.Order; l++)
+                {
+                    if (i != l && (A[i, l] == 1 || Z[i, l] > 0))
+                    {
+                        b[i, l] = 1;
+                    }
+                    else
+                    {
+                        b[i, l] = 0;
+                    }
+                }
+            }
+            return new SquaredMatrix(b);
+        }
+
+        private static bool AllOnes(SquaredMatrix A)
+        {
+            for (int i = 0; i < A.Order; i++)
+            {
+                for (int l = 0; l < A.Order; l++)
+                {
+                    if (i != l && A[i, l] != 1)
+                    {
+                        // If we found any zero in matrix except main diagonal - return false
+                        return false;
+                    }
+                }
+            }
+            // If we didn't return on loop - return true
+            return true;
+        }
+
     }
 
-    class IncompatibleMatricesException : Exception
-    {
-        public IncompatibleMatricesException(string message) : base(message) { }
-    }
+
 }

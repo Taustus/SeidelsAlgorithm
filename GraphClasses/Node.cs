@@ -30,7 +30,7 @@ namespace Seidel_s_Algorithm
 
         public Node AddEdge(Node secondNode)
         {
-            if (Edges.Exists(edge => edge.SecondNode.Equals(secondNode) || this.Equals(secondNode)))
+            if (Edges.Exists(edge => edge.SecondNode.Equals(secondNode)) || Equals(secondNode))
             {
                 throw new BadEdgeException($"Can't create duplicate of edge between {Name}---{secondNode.Name} !");
             }
