@@ -25,7 +25,10 @@ namespace Seidel_s_Algorithm
         // Nodes count
         public int NodesCount { get; private set; }
 
-
+        /// <summary>
+        /// Creates new instance of Graph class
+        /// </summary>
+        /// <param name="nodesCount"> Nodes count </param>
         public Graph(int nodesCount)
         {
             NodesCount = nodesCount;
@@ -37,7 +40,7 @@ namespace Seidel_s_Algorithm
         /// Generate nodes and edges betwen them, forming undirected, unweighted and connected graph
         /// Works only with even number of vertices (have no time to fix this issue)
         /// </summary>
-        /// <param name="nodesCount"></param>
+        /// <param name="nodesCount"> Nodes count </param>
         private void GenerateNodes(int nodesCount)
         {
             Nodes = new List<Node>();
@@ -106,9 +109,9 @@ namespace Seidel_s_Algorithm
         /// <summary>
         /// Recursive method, that returns list of connected nodes
         /// </summary>
-        /// <param name="startNode"></param>
-        /// <param name="previousNode"></param>
-        /// <param name="visitedNodes"></param>
+        /// <param name="startNode"> First node </param>
+        /// <param name="previousNode"> Second node </param>
+        /// <param name="visitedNodes"> All visited nodes </param>
         /// <returns></returns>
         List<Node> GetConnectedNodes(Node startNode, Node previousNode, List<Node> visitedNodes)
         {

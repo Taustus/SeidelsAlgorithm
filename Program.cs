@@ -9,7 +9,10 @@ namespace Seidel_s_Algorithm
         {
             do
             {
+                // To makes zsure that user will enter number
                 bool flag = false;
+
+                // Future nodes count
                 int nodesCount = 0;
                 do
                 {
@@ -21,19 +24,23 @@ namespace Seidel_s_Algorithm
 
                 Console.WriteLine();
 
+                // Create new Graph instance
                 Graph graph = new Graph(nodesCount);
 
+                // Write it's info to console
                 graph.WriteToConsoleWithColors();
 
                 Console.WriteLine("\nRunning Seidel's Algo...\n");
 
+                // Run Seidel's algorithm on current graph
                 SquaredMatrix result = Algorithm.RunSeidelsAlgo(graph.AdjacencyMatrix);
 
                 Console.WriteLine($"Result:\n\n");
 
                 result.WriteToConsoleWithColors(graph);
 
-                Console.WriteLine("\nPress ESC to exit...\n");
+                // Try again?
+                Console.WriteLine("\nPress any key to repe\nPress ESC to exit...\n");
 
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
