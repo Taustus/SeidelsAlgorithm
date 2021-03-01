@@ -35,12 +35,12 @@ namespace Seidel_s_Algorithm
                 // Run Seidel's algorithm on current graph
                 SquaredMatrix result = Algorithm.RunSeidelsAlgo(graph.AdjacencyMatrix);
 
-                Console.WriteLine($"Result:\n\n");
+                Console.WriteLine($"Result:\n");
 
                 result.WriteToConsoleWithColors(graph);
 
                 // Try again?
-                Console.WriteLine("\nPress any key to repe\nPress ESC to exit...\n");
+                Console.WriteLine("\nPress any key to repeat...\n\nPress ESC to exit...\n");
 
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
