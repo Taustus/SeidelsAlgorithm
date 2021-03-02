@@ -4,4 +4,6 @@ This homework was done by Sergey Babikov.
 ## About program
 This program implements Seidel's APSP algorithm (https://en.wikipedia.org/wiki/Seidel%27s_algorithm).
 ## Project structure:
+- "TestResults" folder:
+	- Latest test report
 - TestAlgorithm.cs - test methods for Seidel's algorithm ("../SeidelsAlgorithms.Algorithms.cs")
