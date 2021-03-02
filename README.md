@@ -1,4 +1,4 @@
-# Homework for HSE Course "Computation Complexity": 
+# Homework for HSE Course "Computation Complexity"
 ## Seidel's Algorithm
 This homework was done by Sergey Babikov. 
 ## About program
