@@ -11,6 +11,5 @@ This program implements Seidel's APSP algorithm (https://en.wikipedia.org/wiki/S
 ## Repository structure:
 - "SeidelsAlgorithm" - main project folder
 - "XUnitTestProject" - xUnit test project folder
-1) Build project and run;
-2) Enter any number of nodes (vertices) to generate random undirected, unweighted and connected graph;
-3) Look at your console! There you can find information about generated graph and solution to APSP problem created by Seidel's Algorithm!
+## Test coverage:
+You can find latest test report here "https://github.com/Taustus/SeidelsAlgorithm/tree/master/XUnitTestProject/TestResults".
