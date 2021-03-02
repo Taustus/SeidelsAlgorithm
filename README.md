@@ -12,4 +12,4 @@ This program implements Seidel's APSP algorithm (https://en.wikipedia.org/wiki/S
 - "SeidelsAlgorithm" - main project folder
 - "XUnitTestProject" - xUnit test project folder
 ## Test coverage:
-You can find latest test report here "https://github.com/Taustus/SeidelsAlgorithm/tree/master/XUnitTestProject/TestResults".
+You can find latest test report here https://github.com/Taustus/SeidelsAlgorithm/tree/master/XUnitTestProject/TestResults.
