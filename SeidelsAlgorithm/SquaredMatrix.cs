@@ -121,7 +121,7 @@ namespace Seidel_s_Algorithm
         /// <returns> Result of matrices subtraction </returns>
         public static SquaredMatrix operator -(SquaredMatrix A, SquaredMatrix B)
         {
-            if (A.Order != B.Order)
+            if (A.Order != B.Order) 
             {
                 throw new DifferentOrdersOfMatricesException($"Different orders of matrices! Order of matrix A is {A.Order} and order of matrix B is {B.Order}.");
             }
